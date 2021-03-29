@@ -1,0 +1,30 @@
+﻿@using WhoWhom.Models
+@model IEnumerable<ResultCalculation>
+
+@{
+    ViewData["Title"] = "Calculation";
+}
+
+<h1>Розрахунок</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">ХТО</th>
+            <th scope="col">СКІЛЬКИ</th>
+            <th scope="col">КОМУ</th>
+        </tr>
+    </thead>
+
+
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.UserLess</td>
+                <td>@item.Money UHA</td>
+                <td>@item.UserMore</td>
+            </tr>
+        }
+    </tbody>
+</table>
