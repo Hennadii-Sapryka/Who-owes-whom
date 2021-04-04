@@ -4,9 +4,9 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using WhoWhom.Data;
+using WhoOwesWhom.Data;
 
-namespace WhoWhom.Migrations
+namespace WhoOwesWhom.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
     partial class ApplicationDbContextModelSnapshot : ModelSnapshot
@@ -224,7 +224,7 @@ namespace WhoWhom.Migrations
                     b.ToTable("AspNetUserTokens");
                 });
 
-            modelBuilder.Entity("WhoWhom.Models.Product", b =>
+            modelBuilder.Entity("WhoOwesWhom.Models.Product", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -260,7 +260,7 @@ namespace WhoWhom.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUser", b =>
                 {
-                    b.HasOne("WhoWhom.Models.Product", null)
+                    b.HasOne("WhoOwesWhom.Models.Product", null)
                         .WithMany("identytiUsers")
                         .HasForeignKey("ProductId");
                 });

@@ -2,10 +2,10 @@
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 using System.Linq;
-using WhoWhom.Data;
-using WhoWhom.Models;
+using WhoOwesWhom.Data;
+using WhoOwesWhom.Models;
 
-namespace WhoWhom.Controllers
+namespace WhoOwesWhom.Controllers
 {
     public class CalculationController : Controller
     {

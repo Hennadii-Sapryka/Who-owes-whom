@@ -1,6 +1,6 @@
 using System;
 
-namespace WhoWhom.Models
+namespace WhoOwesWhom.Models
 {
     public class ErrorViewModel
     {

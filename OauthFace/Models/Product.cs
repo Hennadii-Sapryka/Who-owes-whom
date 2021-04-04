@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
-namespace WhoWhom.Models
+namespace WhoOwesWhom.Models
 {
     public class Product
     {

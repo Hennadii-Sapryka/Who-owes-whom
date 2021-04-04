@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
-using WhoWhom.Data;
-using WhoWhom.Models;
+using WhoOwesWhom.Data;
+using WhoOwesWhom.Models;
 
-namespace WhoWhom.Controllers
+namespace WhoOwesWhom.Controllers
 {
     public class HomeController : Controller
     {

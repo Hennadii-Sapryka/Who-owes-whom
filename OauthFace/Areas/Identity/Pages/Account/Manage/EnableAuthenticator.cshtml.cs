@@ -11,7 +11,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Logging;
 
-namespace WhoWhom.Areas.Identity.Pages.Account.Manage
+namespace WhoOwesWhom.Areas.Identity.Pages.Account.Manage
 {
     public class EnableAuthenticatorModel : PageModel
     {
@@ -148,7 +148,7 @@ namespace WhoWhom.Areas.Identity.Pages.Account.Manage
         {
             return string.Format(
                 AuthenticatorUriFormat,
-                _urlEncoder.Encode("WhoWhom"),
+                _urlEncoder.Encode("WhoOwesWhom"),
                 _urlEncoder.Encode(email),
                 unformattedKey);
         }

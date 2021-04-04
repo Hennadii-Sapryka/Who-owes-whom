@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore.Migrations;
 
-namespace WhoWhom.Migrations
+namespace WhoOwesWhom.Migrations
 {
     public partial class V2 : Migration
     {

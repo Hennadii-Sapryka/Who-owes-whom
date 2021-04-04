@@ -3,10 +3,10 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using WhoWhom.Data;
-using WhoWhom.Models;
+using WhoOwesWhom.Data;
+using WhoOwesWhom.Models;
 
-namespace WhoWhom.Controllers
+namespace WhoOwesWhom.Controllers
 {
     public class ProductsController : Controller
     {
