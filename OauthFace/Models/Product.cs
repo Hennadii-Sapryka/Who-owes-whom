@@ -12,20 +12,20 @@ namespace WhoWhom.Models
 
         [Required]
         [MaxLength(10)]
-        [Display(Name = "Що купив")]
+        [Display(Name = "What buy")]
         public string Name { get; set; }
 
         [Required]
         //[MaxLength(10)]
         [Range(1, int.MaxValue, ErrorMessage = "лише числа які більше 0")]
-        [Display(Name = "Ціна")]
+        [Display(Name = "Price")]
         public int Price { get; set; }
 
         [Required]
         [MaxLength(10)]
-        [Display(Name = "Хто купив")]
+        [Display(Name = "Who buy")]
         public string User { get; set; }
 
-        //public List<AccountUser> accountUsers { get; set; }
+        public List<IdentityUser> identytiUsers { get; set; }
     }
 }

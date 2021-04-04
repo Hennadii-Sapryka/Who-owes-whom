@@ -5,10 +5,10 @@
 }
 
 <div class="text-center">
-    <h1 class="display-4">Список продуктів</h1>
+    <h1 class="display-4">List of product</h1>
 
     <p>
-        <a asp-action="Create">Додати продукт</a>
+        <a asp-action="Create">Add product</a>
     </p>
     <table class="table">
         <thead>
@@ -27,32 +27,31 @@
         <tbody>
             @foreach (var item in Model)
             {
-                <tr>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Name)
-                    </td>
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
 
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Price)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.User)
-                    </td>
-                    <td>
-                        <a asp-action="Edit" asp-route-id="@item.Id">Редагувати</a> |
-                        <a asp-action="Details" asp-route-id="@item.Id">Детально</a> |
-                        <a asp-action="Delete" asp-route-id="@item.Id">Видалити</a>
-                    </td>
-                </tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Price)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.User)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                    <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                    <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                </td>
+            </tr>
 
             }
         </tbody>
     </table>
     <div>
         <h6 class="display-4">
-            Загальна сума становить: @Html.ViewData.Model.Sum(m => m.Price)
+            Total sum: @Html.ViewData.Model.Sum(m => m.Price)
 
         </h6>
-
     </div>
 </div>

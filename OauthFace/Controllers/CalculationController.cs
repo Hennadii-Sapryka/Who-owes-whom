@@ -1,5 +1,4 @@
-﻿
-using Microsoft.AspNetCore.Identity;
+﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,15 +20,13 @@ namespace WhoWhom.Controllers
 
         public IActionResult Calculation()
         {
-            var U = _userContext.Users.ToList();
-
+            var identityUsers = _userContext.Users.ToList();
             var products = _context.Product.ToList();
 
             if (products.FirstOrDefault() == null)
             {
                 return View("NotFound");
             }
-            // знаходимо середнє арифметичне значення ціни
             var average = products
                 .Sum(m => m.Price)
                 / products
@@ -37,13 +34,10 @@ namespace WhoWhom.Controllers
                 .Count();
 
             List<ResultCalculation> Users = new List<ResultCalculation>();
-
-            // визначаємо кількість осіб та їхню загальну суму витрат
             Product[] People = products
                 .GroupBy(m => m.User)
                 .Select(g => new Product { User = g.Key, Price = g.Sum(p => p.Price) }).ToArray();
            
-            // сортуємо осіб по тому хто більше а хто менше витратив відносно середньої ціни
             Product[] GiveMoreMoney = People.Where(m => m.Price > average).ToArray();
             Product[] GiveLessMoney = People.Where(m => m.Price < average).ToArray();
 
@@ -62,20 +56,16 @@ namespace WhoWhom.Controllers
                         }
                         if (GiveLessMoney[j].Price == average)
                         {
-                            // добавляємо в список осіб для відображення у View
                             Users.Add(new ResultCalculation
                             {
                                 UserLess = GiveLessMoney[j].User,
                                 UserMore = GiveMoreMoney[i].User,
                                 Money = count,
                                 Average = average,
-
                             });
-
                         }
                         else if (GiveMoreMoney[i].Price == average)
                         {
-                            // добавляємо в список осіб для відображення у View
                             Users.Add(new ResultCalculation
                             {
                                 UserLess = GiveLessMoney[j].User,
@@ -86,7 +76,6 @@ namespace WhoWhom.Controllers
                             count = 0;
                         }
                     }
-
                 }
             }
             return View(Users);

@@ -5,7 +5,7 @@
 }
 
 <div class="text-center">
-    <h1 class="display-4">Додати продукти</h1>
+    <h1 class="display-4">Add product</h1>
 
 </div>
 
@@ -24,20 +24,29 @@
                 <input asp-for="User" class="form-control" />
                 <span asp-validation-for="User" class="text-danger"></span>
             </div>
+
             <div class="form-group">
                 <label asp-for="Price" class="control-label"></label>
-                <input asp-for="Price" class="form-control" Operator="GreaterThanEqual"/>
+                <input asp-for="Price" class="form-control" Operator="GreaterThanEqual" />
                 <span asp-validation-for="Price" class="text-danger"></span>
             </div>
+
             <div class="form-group">
-                <input type="submit" value="Додати" class="btn btn-primary" />
+                <label asp-for="identytiUsers.Where(m=>m.UserName==Model.User)" class="control-label"></label>
+                <input asp-for="identytiUsers.Where(m=>m.UserName==Model.User)" class="form-control" Operator="GreaterThanEqual" />
+                <span asp-validation-for="identytiUsers.Where(m=>m.UserName==Model.User)" class="text-danger"></span>
+            </div>
+
+
+            <div class="form-group">
+                <input type="submit" value="Add" class="btn btn-primary" />
             </div>
         </form>
     </div>
 </div>
 
 <div>
-    <a asp-action="Index">Назад до Списку</a>
+    <a asp-action="Index">Back to list</a>
 </div>
 
 @section Scripts {

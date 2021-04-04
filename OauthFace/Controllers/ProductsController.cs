@@ -5,7 +5,6 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using WhoWhom.Data;
 using WhoWhom.Models;
-using System.Collections.Generic;
 
 namespace WhoWhom.Controllers
 {
@@ -22,17 +21,6 @@ namespace WhoWhom.Controllers
         {
             return View(await _context.Product.ToListAsync());
         }
-
-        //public ActionResult Calculation()
-        //{
-        //    if (_context.Product.FirstOrDefault()==null)
-        //    {
-        //        return View("NotFound");
-        //    }
-        //    return View( _context.Product.ToList());
-            
-        //}
-
 
         public async Task<IActionResult> UserList()
         {
