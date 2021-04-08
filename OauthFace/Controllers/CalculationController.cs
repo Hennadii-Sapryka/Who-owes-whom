@@ -34,11 +34,15 @@ namespace WhoOwesWhom.Controllers
                 .GroupBy(m => m.UserName)
                 .Count();
 
-            List<ResultCalculation> Users = new List<ResultCalculation>();
+            List<ResultCalculation> result = new List<ResultCalculation>();
 
             Product[] people = products
                 .GroupBy(m => m.UserName)
-                .Select(g => new Product { UserName = g.Key, Price = g.Sum(p => p.Price) }).ToArray();
+                .Select(g => new Product
+                {
+                    UserName = g.Key,
+                    Price = g.Sum(p => p.Price)
+                }).ToArray();
 
             Product[] paidMoreMoney = people.Where(m => m.Price > average).ToArray();
             Product[] paidLessMoney = people.Where(m => m.Price < average).ToArray();
@@ -58,7 +62,7 @@ namespace WhoOwesWhom.Controllers
                         }
                         if (paidLessMoney[j].Price == average)
                         {
-                            Users.Add(new ResultCalculation
+                            result.Add(new ResultCalculation
                             {
                                 UserLess = paidLessMoney[j].UserName,
                                 UserMore = paidMoreMoney[i].UserName,
@@ -68,7 +72,7 @@ namespace WhoOwesWhom.Controllers
                         }
                         else if (paidMoreMoney[i].Price == average)
                         {
-                            Users.Add(new ResultCalculation
+                            result.Add(new ResultCalculation
                             {
                                 UserLess = paidLessMoney[j].UserName,
                                 UserMore = paidMoreMoney[i].UserName,
@@ -81,7 +85,7 @@ namespace WhoOwesWhom.Controllers
                 }
             }
 
-            return View(Users);
+            return View(result);
         }
     }
 }
