@@ -35,42 +35,42 @@ namespace WhoOwesWhom.Controllers
 
             List<ResultCalculation> Users = new List<ResultCalculation>();
 
-            Product[] People = products
+            Product[] people = products
                 .GroupBy(m => m.UserName)
                 .Select(g => new Product { UserName = g.Key, Price = g.Sum(p => p.Price) }).ToArray();
 
-            Product[] PaidMoreMoney = People.Where(m => m.Price > average).ToArray();
-            Product[] PaidLessMoney = People.Where(m => m.Price < average).ToArray();
+            Product[] paidMoreMoney = people.Where(m => m.Price > average).ToArray();
+            Product[] paidLessMoney = people.Where(m => m.Price < average).ToArray();
 
-            for (int i = 0; i < PaidMoreMoney.Length; i++)
+            for (int i = 0; i < paidMoreMoney.Length; i++)
             {
-                for (int j = 0; j < PaidLessMoney.Length; j++)
+                for (int j = 0; j < paidLessMoney.Length; j++)
                 {
                     int count = 0;
-                    while (PaidLessMoney[j].Price != average)
+                    while (paidLessMoney[j].Price != average)
                     {
-                        if (PaidMoreMoney[i].Price != average)
+                        if (paidMoreMoney[i].Price != average)
                         {
-                            PaidMoreMoney[i].Price -= 1;
-                            PaidLessMoney[j].Price += 1;
+                            paidMoreMoney[i].Price -= 1;
+                            paidLessMoney[j].Price += 1;
                             count++;
                         }
-                        if (PaidLessMoney[j].Price == average)
+                        if (paidLessMoney[j].Price == average)
                         {
                             Users.Add(new ResultCalculation
                             {
-                                UserLess = PaidLessMoney[j].UserName,
-                                UserMore = PaidMoreMoney[i].UserName,
+                                UserLess = paidLessMoney[j].UserName,
+                                UserMore = paidMoreMoney[i].UserName,
                                 Money = count,
                                 Average = average,
                             });
                         }
-                        else if (PaidMoreMoney[i].Price == average)
+                        else if (paidMoreMoney[i].Price == average)
                         {
                             Users.Add(new ResultCalculation
                             {
-                                UserLess = PaidLessMoney[j].UserName,
-                                UserMore = PaidMoreMoney[i].UserName,
+                                UserLess = paidLessMoney[j].UserName,
+                                UserMore = paidMoreMoney[i].UserName,
                                 Money = count
                             });
                             i++;
