@@ -16,8 +16,7 @@ namespace WhoOwesWhom.Data
         }
 
         public DbSet<Product> Product { get; set; }
-        public DbSet<IdentityUser> identityUsers { get; set; }
+        public DbSet<IdentityUser> IdentityUsers { get; set; }
 
-        //public DbSet <AccountUser> accountUsers { get; set; }
     }
 }

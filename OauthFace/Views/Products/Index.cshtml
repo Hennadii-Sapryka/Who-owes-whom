@@ -14,13 +14,13 @@
         <thead>
             <tr>
                 <th>
-                    @Html.DisplayNameFor(model => model.Name)
+                    @Html.DisplayNameFor(model => model.ProductName)
                 </th>
                 <th>
                     @Html.DisplayNameFor(model => model.Price)
                 </th>
                 <th>
-                    @Html.DisplayNameFor(model => model.User)
+                    @Html.DisplayNameFor(model => model.UserName)
                 </th>
             </tr>
         </thead>
@@ -29,14 +29,13 @@
             {
             <tr>
                 <td>
-                    @Html.DisplayFor(modelItem => item.Name)
+                    @Html.DisplayFor(modelItem => item.ProductName)
                 </td>
-
                 <td>
                     @Html.DisplayFor(modelItem => item.Price)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.User)
+                    @Html.DisplayFor(modelItem => item.UserName)
                 </td>
                 <td>
                     <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
@@ -50,8 +49,7 @@
     </table>
     <div>
         <h6 class="display-4">
-            Total sum: @Html.ViewData.Model.Sum(m => m.Price)
-
+            Total sum - @Html.ViewData.Model.Sum(m => m.Price)UHA
         </h6>
     </div>
 </div>

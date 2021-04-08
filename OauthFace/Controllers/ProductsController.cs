@@ -1,6 +1,7 @@
 ﻿using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using WhoOwesWhom.Data;
@@ -11,10 +12,13 @@ namespace WhoOwesWhom.Controllers
     public class ProductsController : Controller
     {
         private readonly ApplicationDbContext _context;
+        private readonly UserManager<IdentityUser> _identityUser;
 
-        public ProductsController(ApplicationDbContext context)
+        public ProductsController(ApplicationDbContext context, 
+            UserManager<IdentityUser> identityUser)
         {
             _context = context;
+            _identityUser = identityUser;
         }
 
         public async Task<IActionResult> Index()
@@ -54,10 +58,12 @@ namespace WhoOwesWhom.Controllers
         [Authorize]
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("id,Name,Price,User")] Product product)
+        public async Task<IActionResult> Create([Bind("ProductName,Price")] Product product)
         {
             if (ModelState.IsValid)
             {
+                var identity = _identityUser.Users.FirstOrDefault(m => m.UserName == m.NormalizedEmail);
+                product.UserName = identity.UserName;
                 _context.Add(product);
                 await _context.SaveChangesAsync();
 
@@ -95,6 +101,8 @@ namespace WhoOwesWhom.Controllers
             {
                 try
                 {
+                    var identity = _identityUser.Users.FirstOrDefault(m => m.UserName == m.NormalizedEmail);
+                    product.UserName = identity.UserName;
                     _context.Update(product);
                     await _context.SaveChangesAsync();
                 }

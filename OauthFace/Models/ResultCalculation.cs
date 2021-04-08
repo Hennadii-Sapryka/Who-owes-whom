@@ -11,6 +11,5 @@ namespace WhoOwesWhom.Models
         public string UserMore { get; set; }
         public int Money { get; set; }
         public int Average { get; set; }
-
     }
 }

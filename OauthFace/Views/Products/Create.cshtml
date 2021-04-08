@@ -1,4 +1,6 @@
 ﻿@model WhoOwesWhom.Models.Product
+@using Microsoft.AspNetCore.Identity
+@inject UserManager<IdentityUser> UserManager
 
 @{
     ViewData["Title"] = "Create";
@@ -15,28 +17,16 @@
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
                 <div class="form-group">
-                    <label asp-for="Name" class="control-label"></label>
-                    <input asp-for="Name" class="form-control" />
-                    <span asp-validation-for="Name" class="text-danger"></span>
+                    <label asp-for="ProductName" class="control-label"></label>
+                    <input asp-for="ProductName" class="form-control" />
+                    <span asp-validation-for="ProductName" class="text-danger"></span>
                 </div>
-
-                <label asp-for="User" class="control-label"></label>
-                <input asp-for="User" class="form-control" />
-                <span asp-validation-for="User" class="text-danger"></span>
             </div>
-
             <div class="form-group">
                 <label asp-for="Price" class="control-label"></label>
                 <input asp-for="Price" class="form-control" Operator="GreaterThanEqual" />
                 <span asp-validation-for="Price" class="text-danger"></span>
             </div>
-
-            <div class="form-group">
-                <label asp-for="identytiUsers.Where(m=>m.UserName==Model.User)" class="control-label"></label>
-                <input asp-for="identytiUsers.Where(m=>m.UserName==Model.User)" class="form-control" Operator="GreaterThanEqual" />
-                <span asp-validation-for="identytiUsers.Where(m=>m.UserName==Model.User)" class="text-danger"></span>
-            </div>
-
 
             <div class="form-group">
                 <input type="submit" value="Add" class="btn btn-primary" />

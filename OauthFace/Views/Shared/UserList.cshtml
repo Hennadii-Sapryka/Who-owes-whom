@@ -13,13 +13,13 @@
     <table>
 
         @foreach (var item in Model
-            .GroupBy(m => m.User)
-            .Select(g => new Product { User = g.Key, Price = g.Sum(p => p.Price) }))
+            .GroupBy(m => m.UserName)
+            .Select(g => new Product { UserName = g.Key, Price = g.Sum(p => p.Price) }))
 
         {
             <tr>
                 <td>
-                    @item.User : spent @item.Price UHA
+                    @item.UserName-spent @item.Price UHA
                 </td>
             </tr>
         }
