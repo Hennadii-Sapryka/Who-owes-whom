@@ -1,13 +1,10 @@
-﻿using Microsoft.AspNetCore.Identity;
-using System;
-using System.Collections.Generic;
+﻿using System;
 using System.ComponentModel.DataAnnotations;
 
 namespace WhoOwesWhom.Models
 {
     public class Product
     {
-
         [Display(Name = "№")]
         public int Id { get; set; }
 
@@ -23,10 +20,5 @@ namespace WhoOwesWhom.Models
         public int Price { get; set; }
 
         public string UserName { get; set; }
-
-        //[Required]
-        //[MaxLength(10)]
-        //[Display(Name = "Who bought")]
-        //public string User { get; set; }
     }
 }

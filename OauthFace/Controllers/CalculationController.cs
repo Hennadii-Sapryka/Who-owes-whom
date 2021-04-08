@@ -20,7 +20,8 @@ namespace WhoOwesWhom.Controllers
 
         public IActionResult Calculation()
         {
-            var curentUserId = _userContext.Users.FirstOrDefault(u => u.UserName == u.NormalizedUserName);
+            var curentUserId = _userContext.
+                Users.FirstOrDefault(u => u.UserName == u.NormalizedUserName);
             var products = _context.Product.ToList();
 
             if (products.FirstOrDefault() == null)
@@ -79,6 +80,7 @@ namespace WhoOwesWhom.Controllers
                     }
                 }
             }
+
             return View(Users);
         }
     }
