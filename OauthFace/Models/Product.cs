@@ -20,5 +20,6 @@ namespace WhoOwesWhom.Models
         public int Price { get; set; }
 
         public string UserName { get; set; }
+
     }
 }

@@ -20,21 +20,21 @@ namespace WhoOwesWhom.Controllers
 
         public IActionResult Calculation()
         {
-            var curentUserId = _userContext.
-                Users.FirstOrDefault(u => u.UserName == u.NormalizedUserName);
+            //var curentUserId = _userContext.Users.FirstOrDefault(u => u.UserName == u.NormalizedUserName);
             var products = _context.Product.ToList();
 
             if (products.FirstOrDefault() == null)
             {
                 return View("NotFound");
             }
-            var average = products
+
+            int average = products
                 .Sum(m => m.Price)
                 / products
                 .GroupBy(m => m.UserName)
                 .Count();
 
-            List<ResultCalculation> result = new List<ResultCalculation>();
+            List<ResultCalculation> results = new List<ResultCalculation>();
 
             Product[] people = products
                 .GroupBy(m => m.UserName)
@@ -62,7 +62,7 @@ namespace WhoOwesWhom.Controllers
                         }
                         if (paidLessMoney[j].Price == average)
                         {
-                            result.Add(new ResultCalculation
+                            results.Add(new ResultCalculation
                             {
                                 UserLess = paidLessMoney[j].UserName,
                                 UserMore = paidMoreMoney[i].UserName,
@@ -72,7 +72,7 @@ namespace WhoOwesWhom.Controllers
                         }
                         else if (paidMoreMoney[i].Price == average)
                         {
-                            result.Add(new ResultCalculation
+                            results.Add(new ResultCalculation
                             {
                                 UserLess = paidLessMoney[j].UserName,
                                 UserMore = paidMoreMoney[i].UserName,
@@ -85,7 +85,7 @@ namespace WhoOwesWhom.Controllers
                 }
             }
 
-            return View(result);
+            return View(results);
         }
     }
 }
