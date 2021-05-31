@@ -52,7 +52,7 @@ namespace Whooweswhom.Migrations
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    ProductName = table.Column<string>(maxLength: 10, nullable: false),
+                    ProductName = table.Column<string>(maxLength: 20, nullable: false),
                     Price = table.Column<int>(nullable: false),
                     UserName = table.Column<string>(nullable: true)
                 },

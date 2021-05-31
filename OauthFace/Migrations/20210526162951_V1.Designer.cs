@@ -10,7 +10,7 @@ using WhoOwesWhom.Data;
 namespace Whooweswhom.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20210407130442_V1")]
+    [Migration("20210526162951_V1")]
     partial class V1
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -233,8 +233,8 @@ namespace Whooweswhom.Migrations
 
                     b.Property<string>("ProductName")
                         .IsRequired()
-                        .HasColumnType("nvarchar(10)")
-                        .HasMaxLength(10);
+                        .HasColumnType("nvarchar(20)")
+                        .HasMaxLength(20);
 
                     b.Property<string>("UserName")
                         .HasColumnType("nvarchar(max)");

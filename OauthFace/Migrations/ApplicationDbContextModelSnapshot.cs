@@ -231,8 +231,8 @@ namespace Whooweswhom.Migrations
 
                     b.Property<string>("ProductName")
                         .IsRequired()
-                        .HasColumnType("nvarchar(10)")
-                        .HasMaxLength(10);
+                        .HasColumnType("nvarchar(20)")
+                        .HasMaxLength(20);
 
                     b.Property<string>("UserName")
                         .HasColumnType("nvarchar(max)");

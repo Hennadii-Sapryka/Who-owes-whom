@@ -9,6 +9,7 @@ using WhoOwesWhom.Models;
 
 namespace WhoOwesWhom.Controllers
 {
+    [Controller]
     public class ProductsController : Controller
     {
         private readonly ApplicationDbContext _context;
@@ -62,7 +63,8 @@ namespace WhoOwesWhom.Controllers
         {
             if (ModelState.IsValid)
             {
-                var identity = _identityUser.Users.FirstOrDefault(m => m.UserName == m.NormalizedEmail);
+                var test = _context.Users.FirstOrDefault(m => m.UserName == product.UserName);
+                var identity = _identityUser.Users.FirstOrDefault(m => m.UserName == m.UserName);
                 product.UserName = identity.UserName;
                 _context.Add(product);
                 await _context.SaveChangesAsync();
